@@ -15,7 +15,7 @@
         </div>
 
         <form class="mt-8" novalidate @submit.prevent="submitForm">
-        
+            <input type="hidden" v-model="form.locale">
             <InputField
                 :label="$t('global.StudioName')"
                 :class="getValidationClass('client_name')"
@@ -165,6 +165,7 @@ export default {
         email: '',
         password: '',
         confirm_password: '',
+        locale: this.$route.query.local? this.$route.query.local: "en",
       },
 
     };
@@ -174,7 +175,7 @@ export default {
       'requestedRoute',
       'imageServer',
       'client',
-    ]),
+    ])
   },
   methods: {
 
@@ -191,13 +192,17 @@ export default {
 
     async submitForm() {
       this.$v.$touch();
+      
+      console.log("form = ", this.form);
 
       if (this.$v.$invalid) return;
 
+      // this.form["locale"] = local;
+      console.log("form = ", this.form);
+
       const response = await YogoApi.post('/client-signing-up', this.form);
-      console.log("OK");
-      // const response = await YogoApi.post('/login', this.form);
-      if (response.error) {
+
+    if (response.error) {
         console.log("response.error = ", response.error);
         console.log("response.message = ", response.message);
       } else {
@@ -266,6 +271,7 @@ export default {
         required, 
         sameAsPassword: sameAs("password") 
       },
+      locale: {},
     },
   },
 };
