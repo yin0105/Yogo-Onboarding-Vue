@@ -201,7 +201,7 @@ export default {
     lastNameMustBeEntered: 'Efternavn skal indtastes',
   },
   system: {
-    documentTitle: 'YOGO Underviser',
+    documentTitle: 'YOGO Ombordstigning',
   },
   time: {
     day: "dag",

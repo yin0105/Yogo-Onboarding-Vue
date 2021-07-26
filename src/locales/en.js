@@ -201,7 +201,7 @@ export default {
     lastNameMustBeEntered: 'Last name must be entered',
   },
   system: {
-    documentTitle: 'YOGO Teacher',
+    documentTitle: 'YOGO Onboarding',
   },
   time: {
     day: "day",
