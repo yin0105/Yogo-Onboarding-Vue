@@ -149,7 +149,7 @@ export default new Vuex.Store({
         commit('setReady');
         if (router.currentRoute.name === 'Init' || router.currentRoute.meta.requireAuth !== false) {
           // requireAuth might be undefined, which should be taken as "true"
-          router.push({ name: 'Login' });
+          router.push({ name: 'Signup' });
         }
       }
     },

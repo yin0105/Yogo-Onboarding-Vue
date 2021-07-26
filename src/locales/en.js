@@ -154,6 +154,7 @@ export default {
     CheckedIn: "Checked in",
     Room: "Room",
     Total: "Total",
+    StudioName: "Studio name",
   },
   login: {
     teacherLogin: 'Teacher login',
@@ -191,6 +192,13 @@ export default {
     passwordNotStrong: 'The password is not strong enough',
     linkExpired: 'The link has expired',
     linkExpiredDesc: 'The link you have followed has expired. The link works an hour.',    
+    
+    welcomeToYogo: "Welcome to YOGO",
+    letsStartFreeDemo: "Let's get you started with a free demo",    
+    startMyFreeDemo: "Start my free demo",
+    studioNameMustBeEntered: 'Studio name must be entered',
+    firstNameMustBeEntered: 'First name must be entered',
+    lastNameMustBeEntered: 'Last name must be entered',
   },
   system: {
     documentTitle: 'YOGO Teacher',

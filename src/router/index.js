@@ -5,6 +5,9 @@ import store from '@/store';
 
 import Init from '@/components/Init.vue';
 
+import Signup from '@/components/Signup.vue';
+
+
 import Login from '@/components/Login.vue';
 import ProfileEdit from '@/components/ProfileEdit.vue';
 import PasswordReset from '@/components/PasswordReset.vue';
@@ -28,6 +31,15 @@ const router = new Router({
       path: '/',
       name: 'Init',
       component: Init,
+      meta: {
+        requireAuth: false,
+        fullBleedPage: true,
+      },
+    },
+    {
+      path: '/signup',
+      name: 'Signup',
+      component: Signup,
       meta: {
         requireAuth: false,
         fullBleedPage: true,
@@ -118,7 +130,7 @@ router.beforeEach((to, from, next) => {
   // Closed route and not logged in
   // Redirect to Login
   store.commit('setRequestedRoute', to);
-  return next({ name: 'Login' });
+  return next({ name: 'Signup' });
 });
 
 export default router;

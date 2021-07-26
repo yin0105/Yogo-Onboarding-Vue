@@ -154,6 +154,7 @@ export default {
     CheckedIn: "Checket ind",
     Room: "Lokale",
     Total: "Total",
+    StudioName: "Studio-navn",
   },
   login: {
     teacherLogin: 'Underviser login',
@@ -191,6 +192,13 @@ export default {
     passwordNotStrong: 'Adgangskoden er ikke stærk nok',
     linkExpired: 'Linket er udløbet',
     linkExpiredText: 'Det link, du har fulgt, er udløbet. Linket virker en time fra du beder om at nulstille din adgangskode.',    
+    
+    welcomeToYogo: "Velkommen til YOGO",
+    letsStartFreeDemo: "Lad os komme i gang med en gratis demo",    
+    startMyFreeDemo: "Start min gratis demo",
+    studioNameMustBeEntered: 'Studionavn skal indtastes',
+    firstNameMustBeEntered: 'Fornavn skal indtastes.',
+    lastNameMustBeEntered: 'Efternavn skal indtastes',
   },
   system: {
     documentTitle: 'YOGO Underviser',
