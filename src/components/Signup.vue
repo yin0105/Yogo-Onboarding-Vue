@@ -139,6 +139,7 @@ import Imgix from '@/services/Imgix';
 import InputField from './InputField.vue';
 import Modal from './Modal.vue';
 import ModalLogo from './ModalLogo';
+import axios from 'axios';
 
 export default {
   mixins: [validationMixin, Imgix],
@@ -193,36 +194,45 @@ export default {
 
       if (this.$v.$invalid) return;
 
-      const response = await YogoApi.post('/login', this.form);
-
+      const response = await YogoApi.post('/client-signing-up', this.form);
+      console.log("OK");
+      // const response = await YogoApi.post('/login', this.form);
       if (response.error) {
-        this.$store.commit('showAlert', {
-          title: response.error.localized_title,
-          message: response.error.localized_message,
-        });
-        return;
-      }
-
-      if (!response.user || !response.token) {
-        alert(this.$t('login.couldNotLogIn'));
-        return;
-      }
-
-      if (this.rememberMe) {
-        window.localStorage.setItem('accessToken', response.token);
-        window.sessionStorage.removeItem('accessToken');
+        console.log("response.error = ", response.error);
+        console.log("response.message = ", response.message);
       } else {
-        window.localStorage.removeItem('accessToken');
-        window.sessionStorage.setItem('accessToken', response.token);
+        console.log("response = ", response);
+
       }
-      await this.$store.dispatch('updateUser', response.user.id);
-      if (this.requestedRoute) {
-        const requestedRoute = _.pick(this.requestedRoute, ['name', 'params']);
-        this.$store.commit('setRequestedRoute', null);
-        this.$router.push(requestedRoute);
-      } else {
-        this.$router.push({ name: 'MySchedule' });
-      }
+  
+      // if (response.error) {
+      //   this.$store.commit('showAlert', {
+      //     title: response.error.localized_title,
+      //     message: response.error.localized_message,
+      //   });
+      //   return;
+      // }
+
+      // if (!response.user || !response.token) {
+      //   alert(this.$t('login.couldNotLogIn'));
+      //   return;
+      // }
+
+      // if (this.rememberMe) {
+      //   window.localStorage.setItem('accessToken', response.token);
+      //   window.sessionStorage.removeItem('accessToken');
+      // } else {
+      //   window.localStorage.removeItem('accessToken');
+      //   window.sessionStorage.setItem('accessToken', response.token);
+      // }
+      // await this.$store.dispatch('updateUser', response.user.id);
+      // if (this.requestedRoute) {
+      //   const requestedRoute = _.pick(this.requestedRoute, ['name', 'params']);
+      //   this.$store.commit('setRequestedRoute', null);
+      //   this.$router.push(requestedRoute);
+      // } else {
+      //   this.$router.push({ name: 'MySchedule' });
+      // }
     },
   },
   validations: {

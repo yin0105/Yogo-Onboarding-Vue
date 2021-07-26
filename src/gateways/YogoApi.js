@@ -25,7 +25,9 @@ yogoApi.interceptors.response.use(
 
       router.push({ name: 'Login' });
     }
-    return Promise.reject(error);
+    // return Promise.reject(error);
+    console.log("data = ", error.response.data)
+    return error.response.data;
   },
 );
 
