@@ -122,36 +122,36 @@ export default new Vuex.Store({
           'settings',
         ],
       });
-      const [client, loginStatus] = await Promise.all(
-        [
-          YogoApi.get(`/clients/current?${clientQueryString}`),
-          YogoApi.get('/get-login-status'),
-        ],
-      );
+      // const [client, loginStatus] = await Promise.all(
+      //   [
+      //     YogoApi.get(`/clients/current?${clientQueryString}`),
+      //     YogoApi.get('/get-login-status'),
+      //   ],
+      // );
 
-      client.branches = _sortBy(client.branches, 'sort');
-      commit('setClient', client);
-      dispatch('appSettings/update', client.settings);
+      // client.branches = _sortBy(client.branches, 'sort');
+      // commit('setClient', client);
+      // dispatch('appSettings/update', client.settings);
 
-      if (loginStatus.status === 'LOGGED_IN') {
-        await dispatch('updateUser', loginStatus.user.id);
-        commit('setReady');
-        if (router.currentRoute.name === 'Init') {
-          if (state.requestedRoute) {
-            const requestedRoute = _.pick(state.requestedRoute, ['name', 'params']);
-            commit('setRequestedRoute', null);
-            router.push(requestedRoute);
-          } else {
-            router.push({ name: 'MySchedule' });
-          }
-        }
-      } else {
-        commit('setReady');
-        if (router.currentRoute.name === 'Init' || router.currentRoute.meta.requireAuth !== false) {
-          // requireAuth might be undefined, which should be taken as "true"
-          router.push({ name: 'Signup' });
-        }
+      // if (loginStatus.status === 'LOGGED_IN') {
+      //   await dispatch('updateUser', loginStatus.user.id);
+      //   commit('setReady');
+      //   if (router.currentRoute.name === 'Init') {
+      //     if (state.requestedRoute) {
+      //       const requestedRoute = _.pick(state.requestedRoute, ['name', 'params']);
+      //       commit('setRequestedRoute', null);
+      //       router.push(requestedRoute);
+      //     } else {
+      //       router.push({ name: 'MySchedule' });
+      //     }
+      //   }
+      // } else {
+      commit('setReady');
+      if (router.currentRoute.name === 'Init' || router.currentRoute.meta.requireAuth !== false) {
+        // requireAuth might be undefined, which should be taken as "true"
+        router.push({ name: 'Signup' });
       }
+      // }
     },
     async updateUser({ commit }, userId) {
       const [user] = await YogoApi.get(`/users?id=${userId}&populate[]=image&populate[]=teacher_ical_feed_url`);

@@ -6,7 +6,7 @@ export const UPDATE = 'UPDATE';
 const allowedSettingKeys = ['locale'];
 
 const initialState = () => ({
-  locale: 'da',
+  locale: 'en',
 });
 
 const getters = {
