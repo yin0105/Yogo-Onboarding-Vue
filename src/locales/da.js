@@ -199,6 +199,8 @@ export default {
     studioNameMustBeEntered: 'Studionavn skal indtastes',
     firstNameMustBeEntered: 'Fornavn skal indtastes.',
     lastNameMustBeEntered: 'Efternavn skal indtastes',
+    thanksForSigningUp: 'Tak for tilmeldingen',
+    emailConfirmNotification: 'Vi skal bare bekræfte din e-mail, så tjek din postkasse og klik på linket i den e-mail, vi har sendt dig',
   },
   system: {
     documentTitle: 'YOGO Ombordstigning',

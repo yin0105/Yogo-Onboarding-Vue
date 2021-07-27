@@ -202,11 +202,15 @@ export default {
 
       const response = await YogoApi.post('/client-signing-up', this.form);
 
-    if (response.error) {
+      if (response.error) {
         console.log("response.error = ", response.error);
         console.log("response.message = ", response.message);
       } else {
         console.log("response = ", response);
+        this.$router.push({
+          name: 'FirstStepConfirm',
+          params: { },
+        });
 
       }
   

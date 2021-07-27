@@ -1,28 +1,14 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import VTooltip from 'v-tooltip';
 
 import store from '@/store';
-
 import Init from '@/components/Init.vue';
-
 import Signup from '@/components/Signup.vue';
+import FirstStepConfirm from '@/components/FirstStepConfirm.vue';
 
-
-// import Login from '@/components/Login.vue';
-// import ProfileEdit from '@/components/ProfileEdit.vue';
-// import PasswordReset from '@/components/PasswordReset.vue';
-// import PasswordNew from '@/components/PasswordNew.vue';
-import VTooltip from 'v-tooltip';
-// import ClassCheckinSignup from '@/components/ClassCheckinSignup.vue';
-// import SendClassEmail from '@/components/SendClassEmail.vue';
-// import LivestreamClassPreloader from '../components/LivestreamClassPreloader.vue';
-// import MySchedule from '@/components/MySchedule.vue';
-// import ReportSalary from '@/components/ReportSalary'
-
-// const LivestreamClass = () => import('../components/LivestreamClass.vue');
 
 Vue.use(VTooltip);
-
 Vue.use(Router);
 
 const router = new Router({
@@ -40,6 +26,15 @@ const router = new Router({
       path: '/signup',
       name: 'Signup',
       component: Signup,
+      meta: {
+        requireAuth: false,
+        fullBleedPage: true,
+      },
+    },
+    {
+      path: '/first-step-confirm',
+      name: 'FirstStepConfirm',
+      component: FirstStepConfirm,
       meta: {
         requireAuth: false,
         fullBleedPage: true,

@@ -199,6 +199,8 @@ export default {
     studioNameMustBeEntered: 'Studio name must be entered',
     firstNameMustBeEntered: 'First name must be entered',
     lastNameMustBeEntered: 'Last name must be entered',
+    thanksForSigningUp: 'Thanks for signing up',
+    emailConfirmNotification: 'We just need to confirm your email, so please check your mailbox and click the link in the email we have sent you',
   },
   system: {
     documentTitle: 'YOGO Onboarding',
