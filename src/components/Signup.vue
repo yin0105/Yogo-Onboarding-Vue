@@ -193,7 +193,8 @@ export default {
     async submitForm() {
       this.$v.$touch();
       
-      console.log("form = ", this.form);
+      console.log("form = ", this.form, this.$route.query);
+
 
       if (this.$v.$invalid) return;
 
