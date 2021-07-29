@@ -7,6 +7,7 @@ import VueClipboard from 'vue-clipboard2';
 import App from './App.vue';
 import store from './store';
 import router from './router';
+import Notifications from 'vue-notification'
 
 import i18n from './includes/i18n';
 import VueSmoothScroll from 'vue2-smooth-scroll';
@@ -14,6 +15,7 @@ import VueSmoothScroll from 'vue2-smooth-scroll';
 Object.defineProperty(Vue.prototype, '$lodash', { value: lodash });
 
 Vue.use(Vuelidate);
+Vue.use(Notifications)
 
 // Load all filters
 require('./filters/index');

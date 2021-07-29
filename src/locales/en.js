@@ -201,6 +201,11 @@ export default {
     lastNameMustBeEntered: 'Last name must be entered',
     thanksForSigningUp: 'Thanks for signing up',
     emailConfirmNotification: 'We just need to confirm your email, so please check your mailbox and click the link in the email we have sent you',
+    
+    clientSignupNotification: 'Client signup notification',
+    hiYogo: 'Hi YOGO',
+    signedUpDemo: 'This client just signed up for a demo',
+    userName: 'User name',
   },
   system: {
     documentTitle: 'YOGO Onboarding',

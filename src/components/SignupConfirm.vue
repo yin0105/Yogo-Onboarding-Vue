@@ -6,16 +6,17 @@
       <div class="md:bg-white md:border rounded border-gray-200 py-8 md:py-10 sm:px-6 md:px-8">
         <ModalLogo/>
         <h2 class="mt-6 text-center">
-          <p>{{ $t('login.thanksForSigningUp') }}</p>            
+          <p>{{ $t('login.clientSignupNotification') }}</p>            
         </h2>
         
-        <p style="width: 350px; text-align: left; margin: auto; margin-top: 40px; font-size: 20px">{{ $t('login.emailConfirmNotification') }}</p>
-
-        <div class="message">
-          
+        <div style="width: 350px; text-align: center; margin: auto; margin-top: 40px; font-size: 20px">
+            <p>{{ $t('login.hiYogo') }}.</p>
+            <p>{{ $t('login.signedUpDemo') }}:</p>
+            <p>{{ $t('global.ID') }}: {{id}}</p>
+            <p>{{ $t('global.StudioName') }}: {{client_name}}</p>
+            <p>{{ $t('login.UserName') }}: {{username}}</p>
+            <p>{{ $t('global.Email') }}: {{email}}</p>
         </div>
-      
-
       </div>
     </div>
 

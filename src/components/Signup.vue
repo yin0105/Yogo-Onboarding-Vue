@@ -141,6 +141,7 @@ import Modal from './Modal.vue';
 import ModalLogo from './ModalLogo';
 import axios from 'axios';
 
+
 export default {
   mixins: [validationMixin, Imgix],
   components: {
@@ -206,6 +207,12 @@ export default {
       if (response.error) {
         console.log("response.error = ", response.error);
         console.log("response.message = ", response.message);
+        this.$notify({
+          group: 'foo',
+          title: 'Error',
+          text: response.error,
+          type: 'error',
+        });
       } else {
         console.log("response = ", response);
         this.$router.push({

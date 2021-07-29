@@ -47,6 +47,8 @@
       </template>
     </Modal>
 
+    <notifications group="foo" />
+
   </div>
 </template>
 

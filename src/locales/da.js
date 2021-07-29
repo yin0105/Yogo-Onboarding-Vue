@@ -201,6 +201,11 @@ export default {
     lastNameMustBeEntered: 'Efternavn skal indtastes',
     thanksForSigningUp: 'Tak for tilmeldingen',
     emailConfirmNotification: 'Vi skal bare bekræfte din e-mail, så tjek din postkasse og klik på linket i den e-mail, vi har sendt dig',
+
+    clientSignupNotification: 'Underretning om tilmelding af klient',
+    hiYogo: 'Hej YOGO',
+    signedUpDemo: 'Denne klient tilmeldte sig lige en demo',
+    userName: 'Brugernavn',
   },
   system: {
     documentTitle: 'YOGO Ombordstigning',
