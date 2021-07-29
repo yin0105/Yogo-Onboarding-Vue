@@ -7,6 +7,7 @@ import Init from '@/components/Init.vue';
 import Signup from '@/components/Signup.vue';
 import FirstStepConfirm from '@/components/FirstStepConfirm.vue';
 import SignupConfirm from '@/components/SignupConfirm.vue';
+import MailConfirm from '@/components/MailConfirm.vue';
 
 
 Vue.use(VTooltip);
@@ -45,6 +46,15 @@ const router = new Router({
       path: '/signup-confirm',
       name: 'SignupConfirm',
       component: SignupConfirm,
+      meta: {
+        requireAuth: false,
+        fullBleedPage: true,
+      },
+    },
+    {
+      path: '/mail-confirm',
+      name: 'MailConfirm',
+      component: MailConfirm,
       meta: {
         requireAuth: false,
         fullBleedPage: true,

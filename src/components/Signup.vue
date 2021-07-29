@@ -96,27 +96,6 @@
                 </template>
             </InputField>
 
-
-            <!-- <div class="mt-6 md:flex items-center justify-between">
-                <div class="block md:flex items-center mb-4 md:mb-0">
-                <label class="checkbox">
-                    <input
-                    type="checkbox"
-                    v-model="rememberMe"
-                    >
-                    <span>{{ $t('login.rememberMeLabel') }}</span>
-                </label>
-
-                </div>
-                <div class="text-sm leading-5">
-                <router-link class="link-text" :to="{name: 'PasswordReset'}">{{
-                    $t('login.forgotPass')
-                    }}
-                </router-link>
-                </div>
-            </div> -->
-
-
             <button class="btn-primary mt-8 w-full" type="submit">
                 {{ $t('login.startMyFreeDemo') }}
             </button>
@@ -151,11 +130,6 @@ export default {
   },
   data() {
     return {
-      // client_name: '',
-      // first_name: '',
-      // last_name: '',
-      // email: '',
-      // password: '',
       rememberMe: false,
       loginErrorMessage: '',
       loginFailed: false,
@@ -166,7 +140,7 @@ export default {
         email: '',
         password: '',
         confirm_password: '',
-        locale: this.$route.query.local? this.$route.query.local: "en",
+        locale: this.$route.query.locale? this.$route.query.locale: "en",
       },
 
     };
@@ -199,10 +173,9 @@ export default {
 
       if (this.$v.$invalid) return;
 
-      // this.form["locale"] = local;
       console.log("form = ", this.form);
 
-      const response = await YogoApi.post('/client-signing-up', this.form);
+      const response = await YogoApi.post('/client-signing-up?from=' + window.location.origin, this.form);
 
       if (response.error) {
         console.log("response.error = ", response.error);
@@ -221,35 +194,6 @@ export default {
         });
 
       }
-  
-      // if (response.error) {
-      //   this.$store.commit('showAlert', {
-      //     title: response.error.localized_title,
-      //     message: response.error.localized_message,
-      //   });
-      //   return;
-      // }
-
-      // if (!response.user || !response.token) {
-      //   alert(this.$t('login.couldNotLogIn'));
-      //   return;
-      // }
-
-      // if (this.rememberMe) {
-      //   window.localStorage.setItem('accessToken', response.token);
-      //   window.sessionStorage.removeItem('accessToken');
-      // } else {
-      //   window.localStorage.removeItem('accessToken');
-      //   window.sessionStorage.setItem('accessToken', response.token);
-      // }
-      // await this.$store.dispatch('updateUser', response.user.id);
-      // if (this.requestedRoute) {
-      //   const requestedRoute = _.pick(this.requestedRoute, ['name', 'params']);
-      //   this.$store.commit('setRequestedRoute', null);
-      //   this.$router.push(requestedRoute);
-      // } else {
-      //   this.$router.push({ name: 'MySchedule' });
-      // }
     },
   },
   validations: {
@@ -277,7 +221,6 @@ export default {
           return containsUppercase && containsLowercase && containsNumber
         },
         minLength: minLength(6),
-        // maxLength: maxLength(19),
       },
       confirm_password: { 
         required, 
