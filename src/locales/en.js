@@ -206,6 +206,12 @@ export default {
     hiYogo: 'Hi YOGO',
     signedUpDemo: 'This client just signed up for a demo',
     userName: 'User name',
+
+    linkExpired: 'The link has expired',
+    linkInvalid: 'The link is invalid',
+    linkExpiredComment: "Sorry, the link you have clicked is too old. But don't worry, you can still get a free demo of YOGO",
+    linkInvalidComment: "Sorry, the link you have clicked is invalid. But don't worry, you can still get a free demo of YOGO",
+    getFreeDemo: 'Get free demo',
   },
   system: {
     documentTitle: 'YOGO Onboarding',

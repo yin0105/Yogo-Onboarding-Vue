@@ -206,6 +206,12 @@ export default {
     hiYogo: 'Hej YOGO',
     signedUpDemo: 'Denne klient tilmeldte sig lige en demo',
     userName: 'Brugernavn',
+
+    linkExpired: 'Linket er udløbet',
+    linkInvalid: 'Linket er ugyldigt',
+    linkExpiredComment: "Beklager, det link, du har klikket på, er for gammelt. Men rolig, du kan stadig få en gratis demo af YOGO",
+    linkInvalidComment: "Beklager, det link, du har klikket på, er ugyldigt. Men rolig, du kan stadig få en gratis demo af YOGO",
+    getFreeDemo: 'Få gratis demo',
   },
   system: {
     documentTitle: 'YOGO Ombordstigning',
