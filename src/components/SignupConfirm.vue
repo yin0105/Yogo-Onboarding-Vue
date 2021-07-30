@@ -1,20 +1,40 @@
 <template>
   <div
     class="min-h-screen flex items-center justify-center md:bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full">
+    <div class="w-full" v-bind:style="{maxWidth: '600px'}">
 
       <div v-if="success" class="md:bg-white md:border rounded border-gray-200 py-8 md:py-10 sm:px-6 md:px-8">
         <h2 class="mt-6 text-center">
-          <p>{{ $t('login.clientSignupNotification') }}</p>            
+          <p>{{ $t('email.YourYogoDemoReady') }}!</p>            
         </h2>
         
-        <div style="width: 350px; text-align: center; margin: auto; margin-top: 40px; font-size: 20px">
-            <p>{{ $t('login.hiYogo') }}.</p>
-            <p>{{ $t('login.signedUpDemo') }}:</p>
-            <p>{{ $t('global.ID') }}: {{id}}</p>
-            <p>{{ $t('global.StudioName') }}: {{clientName}}</p>
-            <p>{{ $t('login.userName') }}: {{userName}}</p>
-            <p>{{ $t('global.Email') }}: {{email}}</p>
+        <div style="width: 500px; margin: 40px 30px 20px; font-size: 20px">
+
+            <p>{{ $t('email.Dear') }} {{first_name}}.</p>  
+            {{ $t('email.YourYogoDemoReady') }}.  
+            {{ $t('email.PleaseAllowIntroduction') }}  
+            {{ $t('email.CanLogWithiEmailPassword') }}  
+
+            <h3 v-bind:style="styleObjectH3">{{ $t('email.AdminModule') }}: {{admin_module_dashboard_link}}</h3> 
+            {{ $t('email.WhereKeepTrack') }}  
+            {{ $t('email.CustomersClassesEtc') }}  
+
+            <h3 v-bind:style="styleObjectH3">{{ $t('email.CustomerModule') }}: {{frontend_my_profile_link}}</h3> 
+            {{ $t('email.WhereBuyRegister') }}  
+
+            <h3 v-bind:style="styleObjectH3">{{ $t('email.WebsiteWidget') }}</h3> 
+            {{ $t('email.ModulesEasilyEmbeded') }}  
+            {{ $t('email.WayYourCustomers') }}  
+
+            <h3 v-bind:style="styleObjectH3">{{ $t('email.TeacherModule') }}: {{teacher_my_schedule_link}}</h3> 
+            {{ $t('email.WhereYourTeachers') }}  
+            {{ $t('email.AlsoWhereStartLiveStream') }}  
+
+            <h3 v-bind:style="styleObjectH3">{{ $t('email.CheckinModule') }}: {{checkin_link}}</h3> 
+            {{ $t('email.CanRunOnTablet') }}  
+
+            <h3 v-bind:style="styleObjectH3">{{ $t('email.NativeApp') }}:</h3> 
+            {{ $t('email.YogoNativeApp') }} 
         </div>
       </div>
      
@@ -24,7 +44,7 @@
           <p v-if="errorType == 'invalid'">{{ $t('login.linkInvalid') }}</p>            
         </h2>
         
-        <div style="width: 350px; text-align: center; margin: auto; margin-top: 40px; font-size: 20px">
+        <div style="width: 500px; margin: 40px 30px 20px; font-size: 20px">
           <p v-if="errorType == 'expired'">{{ $t('login.linkExpiredComment') }}</p>            
           <p v-if="errorType == 'invalid'">{{ $t('login.linkInvalidComment') }}</p>            
         </div>
@@ -32,10 +52,11 @@
         <button class="btn-primary mt-8 w-full" type="submit">
           {{ $t('login.startMyFreeDemo') }}
         </button>
+        
       </div>
 
       <div v-if="loading" class="md:bg-white md:border rounded border-gray-200 py-8 md:py-10 sm:px-6 md:px-8">
-        <pulse-loader :loading="loading" :color="color" :size="size"></pulse-loader>
+        <clip-loader :loading = "loading" :color = "color" :size = "size" ></clip-loader>
       </div>
 
       
@@ -50,7 +71,7 @@ import { mapGetters } from 'vuex';
 import YogoApi from '@/gateways/YogoApi';
 import ModalLogo from './ModalLogo';
 import axios from 'axios';
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
+import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
 
 export default {
   data() {
@@ -68,12 +89,23 @@ export default {
       size: '45px',
       margin: '2px',
       radius: '2px',
-      loading: false
+      loading: false,
+
+      first_name: '',
+      admin_module_dashboard_link: '',
+      frontend_my_profile_link: '',
+      teacher_my_schedule_link: '',
+      checkin_link: '',
+
+      styleObjectH3: {
+        wordBreak: 'break-all',
+        marginTop: '20px',
+      }
     }
   },
   components: {
     ModalLogo,
-    PulseLoader,
+    ClipLoader,
   },
   created: async function() {    
     if (this.$route.query.token) {
@@ -92,6 +124,19 @@ export default {
           this.errorType = "invalid";
         }
       } else {
+        console.log("response = ", response);
+        this.first_name = response.first_name
+        this.admin_module_dashboard_link = response.admin_module_dashboard_link;
+        this.frontend_my_profile_link = response.frontend_my_profile_link;
+        this.teacher_my_schedule_link = response.teacher_my_schedule_link;
+        this.checkin_link = response.checkin_link;
+
+        console.log("first_name = ", this.first_name);
+        console.log("admin_module_dashboard_link = ", this.admin_module_dashboard_link);
+        console.log("teacher_my_schedule_link = ", this.teacher_my_schedule_link);
+        console.log("teacher_my_schedule_link = ", this.teacher_my_schedule_link);
+        console.log("checkin_link = ", this.checkin_link);
+
         this.loading = false;
         this.success = true;
         this.error = false;
