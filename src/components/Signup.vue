@@ -119,7 +119,6 @@ import Imgix from '@/services/Imgix';
 import InputField from './InputField.vue';
 import Modal from './Modal.vue';
 import ModalLogo from './ModalLogo';
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
 
 
@@ -142,7 +141,6 @@ export default {
         last_name: '',
         email: '',
         password: '',
-        // confirm_password: '',
         locale: this.$route.query.locale? this.$route.query.locale: "en",
       },
 
