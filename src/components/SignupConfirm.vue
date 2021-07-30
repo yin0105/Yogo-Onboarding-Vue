@@ -49,7 +49,7 @@
           <p v-if="errorType == 'invalid'">{{ $t('login.linkInvalidComment') }}</p>            
         </div>
 
-        <button class="btn-primary mt-8 w-full" type="submit">
+        <button class="btn-primary mt-8 w-full" type="button" v-on:click="goHome">
           {{ $t('login.startMyFreeDemo') }}
         </button>
         
@@ -142,6 +142,12 @@ export default {
         this.error = false;
       }
     }
+  },
+  methods: {
+    goHome: function (event) {
+      this.$router.push({name: 'Signup'}) 
+    }
+    
   }
 };
 
