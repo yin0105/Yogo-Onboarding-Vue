@@ -82,7 +82,7 @@
                 </template>
             </InputField>
 
-            <InputField
+            <!-- <InputField
                 :label="$t('global.passwordConfirm')"
                 :class="getValidationClass('confirm_password')"
                 type="password"
@@ -94,10 +94,11 @@
                   </span>
                   <span class="error" v-if="!$v.form.confirm_password.sameAsPassword">{{ $t('login.passwordIsDifferent') }}</span>
                 </template>
-            </InputField>
+            </InputField> -->
 
-            <button class="btn-primary mt-8 w-full" type="submit">
-                {{ $t('login.startMyFreeDemo') }}
+            <button class="btn-primary mt-8 w-full d-flex" type="submit" v-bind:style="{display: 'flex', justifyContent: 'center'}">
+                {{ $t('login.startMyFreeDemo') }} 
+                <clip-loader :loading="loading" :color="color" :size="size" v-bind:style="{marginLeft: '20px'}"></clip-loader>
             </button>
 
         </form>
@@ -118,7 +119,8 @@ import Imgix from '@/services/Imgix';
 import InputField from './InputField.vue';
 import Modal from './Modal.vue';
 import ModalLogo from './ModalLogo';
-import axios from 'axios';
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
+import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
 
 
 export default {
@@ -127,6 +129,7 @@ export default {
     ModalLogo,
     InputField,
     Modal,
+    ClipLoader,
   },
   data() {
     return {
@@ -139,9 +142,15 @@ export default {
         last_name: '',
         email: '',
         password: '',
-        confirm_password: '',
+        // confirm_password: '',
         locale: this.$route.query.locale? this.$route.query.locale: "en",
       },
+
+      color: '#ffffff',
+      size: '15px',
+      margin: '2px',
+      radius: '2px',
+      loading: false
 
     };
   },
@@ -173,13 +182,12 @@ export default {
 
       if (this.$v.$invalid) return;
 
-      console.log("form = ", this.form);
+      this.loading = true;
 
       const response = await YogoApi.post('/client-signing-up?from=' + window.location.origin, this.form);
 
       if (response.error) {
-        console.log("response.error = ", response.error);
-        console.log("response.message = ", response.message);
+        this.loading = false;
         this.$notify({
           group: 'foo',
           title: 'Error',
@@ -187,7 +195,7 @@ export default {
           type: 'error',
         });
       } else {
-        console.log("response = ", response);
+        this.loading = false;
         this.$router.push({
           name: 'FirstStepConfirm',
           params: { },
@@ -222,10 +230,10 @@ export default {
         },
         minLength: minLength(6),
       },
-      confirm_password: { 
-        required, 
-        sameAsPassword: sameAs("password") 
-      },
+      // confirm_password: { 
+      //   required, 
+      //   sameAsPassword: sameAs("password") 
+      // },
       locale: {},
     },
   },
