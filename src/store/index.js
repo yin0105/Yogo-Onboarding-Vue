@@ -131,7 +131,8 @@ export default new Vuex.Store({
 
       // client.branches = _sortBy(client.branches, 'sort');
       // commit('setClient', client);
-      // dispatch('appSettings/update', client.settings);
+      console.log("appSettings/update");
+      dispatch('appSettings/update', {locale: 'da'});
 
       // if (loginStatus.status === 'LOGGED_IN') {
       //   await dispatch('updateUser', loginStatus.user.id);
@@ -156,6 +157,10 @@ export default new Vuex.Store({
     async updateUser({ commit }, userId) {
       const [user] = await YogoApi.get(`/users?id=${userId}&populate[]=image&populate[]=teacher_ical_feed_url`);
       commit('setUser', user);
+    },
+    async updateLocale({ dispatch, commit, state }, locale) {
+      console.log("setLocale: ", locale);
+      dispatch('appSettings/update', {locale: locale});
     },
   },
   strict: debug,

@@ -99,7 +99,10 @@ export default {
     Modal,
   },
   created() {
+    console.log("before dispatch: ");
+
     this.$store.dispatch('init');
+    console.log("after dispatch");
   },
   watch: {
     flashMessages(updatedFlashMessages) {

@@ -119,7 +119,9 @@ import Imgix from '@/services/Imgix';
 import InputField from './InputField.vue';
 import Modal from './Modal.vue';
 import ModalLogo from './ModalLogo';
-import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
+import ClipLoader from 'vue-spinner/src/ClipLoader.vue';
+// import i18n from '../includes/i18n';
+import store from '@/store';
 
 
 export default {
@@ -159,6 +161,7 @@ export default {
       'client',
     ])
   },
+
   methods: {
 
     getValidationClass(fieldName) {
@@ -234,6 +237,19 @@ export default {
       // },
       locale: {},
     },
+  },
+  watch: {
+    locale(updatedLocale) {
+      console.log("locale = ", updatedLocale);
+    }
+  },
+
+  created() {
+    console.log("created:: locale = ", this.$route.query, this.locale);
+    console.log("i18n = ", this.$i18n.locale);
+    if (this.$route.query.locale) {
+      this.$store.dispatch('updateLocale', this.$route.query.locale);  
+    } 
   },
 };
 

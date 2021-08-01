@@ -6,6 +6,10 @@ import da from '@/locales/da';
 import en from '@/locales/en';
 
 const initialLocale = store.state.appSettings.locale || 'da';
+console.log("store = ", store);
+console.log("store.state = ", store.state);
+console.log("store.state.appSettings = ", store.state.appSettings);
+
 
 /**
  * Configure VueI18n
