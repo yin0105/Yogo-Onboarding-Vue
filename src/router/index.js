@@ -54,26 +54,7 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  // If state not ready and page is closed, redirect to Init
-  // if (!store.state.ready && to.meta.requireAuth !== false) {
-  //   store.commit('setRequestedRoute', to);
-  //   return next({ name: 'Init' });
-  // }
-
-  // Logged in?
-  // if (store.getters.userIsLoggedIn) {
   return next();
-  // }
-
-  // Not logged in
-
-  // Some routes are open
-  // if (to.meta.requireAuth === false) return next();
-
-  // Closed route and not logged in
-  // Redirect to Login
-  // store.commit('setRequestedRoute', to);
-  // return next({ name: 'Signup' });
 });
 
 export default router;
