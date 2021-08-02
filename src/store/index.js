@@ -131,7 +131,6 @@ export default new Vuex.Store({
 
       // client.branches = _sortBy(client.branches, 'sort');
       // commit('setClient', client);
-      console.log("appSettings/update");
       dispatch('appSettings/update', {locale: 'da'});
 
       // if (loginStatus.status === 'LOGGED_IN') {
@@ -150,7 +149,7 @@ export default new Vuex.Store({
       commit('setReady');
       if (router.currentRoute.name === 'Init' || router.currentRoute.meta.requireAuth !== false) {
         // requireAuth might be undefined, which should be taken as "true"
-        router.push({ name: 'Signup' });
+        // router.push({ name: 'Signup' });
       }
       // }
     },
@@ -159,7 +158,6 @@ export default new Vuex.Store({
       commit('setUser', user);
     },
     async updateLocale({ dispatch, commit, state }, locale) {
-      console.log("setLocale: ", locale);
       dispatch('appSettings/update', {locale: locale});
     },
   },

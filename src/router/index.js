@@ -68,12 +68,12 @@ router.beforeEach((to, from, next) => {
   // Not logged in
 
   // Some routes are open
-  if (to.meta.requireAuth === false) return next();
+  // if (to.meta.requireAuth === false) return next();
 
   // Closed route and not logged in
   // Redirect to Login
-  store.commit('setRequestedRoute', to);
-  return next({ name: 'Signup' });
+  // store.commit('setRequestedRoute', to);
+  // return next({ name: 'Signup' });
 });
 
 export default router;
